@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Hanken_Grotesk, Bricolage_Grotesque } from "next/font/google";
+import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
 
@@ -13,11 +13,6 @@ const jetbrainsMono = localFont({
   display: 'swap',
   variable: '--font-jetbrains',
 })
-
-const hankenGrotesk = Hanken_Grotesk({
-  variable: "--font-hanken",
-  subsets: ["latin"],
-});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${jetbrainsMono.className} ${hankenGrotesk.variable} ${bricolageGrotesque.variable} antialiased`}>
+      <body className={`${jetbrainsMono.className} ${bricolageGrotesque.variable} antialiased`}>
         {children}
       </body>
     </html>
