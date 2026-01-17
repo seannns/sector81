@@ -18,7 +18,7 @@ export default function Home() {
       </nav>
 
       <section className="flex-1 flex flex-col justify-end items-center px-4 overflow-hidden">
-          <h1 className="text-[20vw] lg:text-[12.5rem] font-bold leading-none whitespace-nowrap">Sector81</h1>
+          <h1 className="font-[family-name:var(--font-bricolage)] text-[20vw] lg:text-[12.5rem] font-bold leading-none whitespace-nowrap">Sector81</h1>
       </section>
 
     </main>

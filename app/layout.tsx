@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Hanken_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono, Hanken_Grotesk, Bricolage_Grotesque } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
+
+const bricolageGrotesque = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin"],
+});
 
 const jetbrainsMono = localFont({
   src: './fonts/JetBrainsMono-Regular.woff2',
@@ -36,7 +41,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${jetbrainsMono.className} ${hankenGrotesk.variable} antialiased`}>
+      <body className={`${jetbrainsMono.className} ${hankenGrotesk.variable} ${bricolageGrotesque.variable} antialiased`}>
         {children}
       </body>
     </html>
