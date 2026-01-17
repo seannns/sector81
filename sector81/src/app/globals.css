@@ -1,0 +1,16 @@
+/* app/globals.css */
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: white;
+  }
+
+  h1 {
+    font-family: var(--font-hanken), sans-serif;
+  }
+}
