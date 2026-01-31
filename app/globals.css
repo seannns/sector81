@@ -15,7 +15,42 @@
     color: white;
   }
 
+  /* Hide default cursor and enable custom cursor everywhere */
+  body {
+    cursor: none;
+  }
+
+  /* Ensure native cursor never appears on interactive elements */
+  a, button, input, textarea {
+    cursor: none !important;
+  }
+
+  ::selection {
+    background-color: #ce562f;
+    color: white;
+  }
+
   h1 {
     font-family: var(--font-bricolage), sans-serif;
+  }
+
+  /* Custom cursor element (single red dot) */
+  .custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+    background: #ce562f;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate3d(-9999px, -9999px, 0) scale(1);
+    transition: transform 120ms cubic-bezier(.2,.8,.2,1);
+  }
+
+  /* keep ring available but hidden (not used) */
+  .custom-cursor-ring {
+    display: none;
   }
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
+import CustomCursor from './components/CustomCursor';
 
 const bricolageGrotesque = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -36,8 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${jetbrainsMono.className} ${bricolageGrotesque.variable} antialiased`}>
+      <body className={`${jetbrainsMono.className} ${bricolageGrotesque.variable} ${geistSans.variable} antialiased`}>
         {children}
+        <CustomCursor />
       </body>
     </html>
   )

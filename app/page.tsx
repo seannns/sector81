@@ -10,6 +10,22 @@ export default function Home() {
   const [heroTranslateY, setHeroTranslateY] = useState(0);
   const [isPastHero, setIsPastHero] = useState(false);
   const [isNavHovered, setIsNavHovered] = useState(false);
+  const [brisbaneTime, setBrisbaneTime] = useState('');
+
+  useEffect(() => {
+    const updateBrisbaneTime = () => {
+      const now = new Date();
+      // Brisbane is UTC+10, no daylight savings
+      const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+      const brisbane = new Date(utc + 10 * 3600000);
+      const hours = brisbane.getHours().toString().padStart(2, '0');
+      const minutes = brisbane.getMinutes().toString().padStart(2, '0');
+      setBrisbaneTime(`${hours}:${minutes}`);
+    };
+    updateBrisbaneTime();
+    const interval = setInterval(updateBrisbaneTime, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,21 +63,21 @@ export default function Home() {
         onMouseLeave={() => setIsNavHovered(false)}
       >
         <div>
-          <a className="p-1">BRISBANE 3:19PM</a>
+          <a className="p-1">BRISBANE {brisbaneTime}</a>
         </div>
         <a 
           href="#" 
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className={`absolute left-1/2 -translate-x-1/2 p-1 hover:bg-white hover:text-black cursor-pointer transition-opacity duration-300 ${
+          className={`absolute left-1/2 -translate-x-1/2 p-1 hover:bg-white hover:text-black transition-opacity duration-300 ${
             isPastHero && isNavHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
           HOME
         </a>
         <div className="flex gap-6">
-          <a href="#about" className="p-1 hover:bg-white hover:text-black cursor-pointer">ABOUT</a>
-          <a href="#works" className="p-1 hover:bg-white hover:text-black cursor-pointer">WORKS</a>
-          <a href="#contact" className="p-1 hover:bg-white hover:text-black cursor-pointer">CONTACT</a>
+          <a href="#about" className="p-1 hover:bg-white hover:text-black">ABOUT</a>
+          <a href="#works" className="p-1 hover:bg-white hover:text-black">WORKS</a>
+          <a href="#contact" className="p-1 hover:bg-white hover:text-black">CONTACT</a>
         </div>
       </nav>
 
@@ -74,7 +90,7 @@ export default function Home() {
         >
             <h1 className="font-[family-name:var(--font-bricolage)] text-[20vw] lg:text-[10rem] font-light leading-none whitespace-nowrap">Sector52</h1>
             <p className="text-center lg:text-right text-sm leading-relaxed mt-6 lg:mt-0">
-              <span className="opacity-50">by Sean Newman Shiels</span>
+              <span className="text-[#ce562f]">by Sean Newman Shiels</span>
               <span className="block h-6"></span>
               aesthetics without filler.<br />
               <span className="block h-2"></span>
@@ -92,11 +108,12 @@ export default function Home() {
         <div className="px-16 lg:px-24 py-8 h-screen flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-12">
           <div className="lg:flex-1 max-w-xl">
             <p className="text-sm leading-relaxed text-center lg:text-left">
-              My name is Sean.<br /><br />
-              I'm a designer with a passion for balancing<br />
-              accessibility and aesthetics.<br /><br />
-              I have a strong belief that good design is<br />
-              not just frictionless, but exciting and memorable.
+                <span className="block font-[family-name:var(--font-geist-sans)] text-2xl lg:text-4xl">Hi, I'm Sean.</span>
+                <span className="block h-3" />
+                I'm a designer with a passion for balancing<br />
+                accessibility and aesthetics.<br /><br />
+                I have a strong belief that good design is<br />
+                not just frictionless, but exciting and memorable.
             </p>
           </div>
           <div className="lg:flex-1 flex justify-center lg:justify-end lg:pr-8">
